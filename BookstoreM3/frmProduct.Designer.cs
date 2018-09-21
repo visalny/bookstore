@@ -32,19 +32,24 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtDiscount = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.Price = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnbrowse = new System.Windows.Forms.Button();
+            this.btnupdate = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -52,18 +57,24 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(335, 0);
+            this.panel1.Location = new System.Drawing.Point(470, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(301, 425);
+            this.panel1.Size = new System.Drawing.Size(378, 425);
             this.panel1.TabIndex = 14;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 6);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(295, 426);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowTemplate.Height = 60;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(372, 420);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // btnNew
             // 
@@ -88,24 +99,7 @@
             this.btnSave.TabIndex = 26;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label6.Location = new System.Drawing.Point(16, 260);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 16);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "Discount";
-            // 
-            // txtDiscount
-            // 
-            this.txtDiscount.Location = new System.Drawing.Point(107, 259);
-            this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(181, 20);
-            this.txtDiscount.TabIndex = 24;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label5
             // 
@@ -136,12 +130,12 @@
             this.label4.TabIndex = 21;
             this.label4.Text = "Price";
             // 
-            // Price
+            // txtPrice
             // 
-            this.Price.Location = new System.Drawing.Point(107, 182);
-            this.Price.Name = "Price";
-            this.Price.Size = new System.Drawing.Size(181, 20);
-            this.Price.TabIndex = 20;
+            this.txtPrice.Location = new System.Drawing.Point(107, 182);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(181, 20);
+            this.txtPrice.TabIndex = 20;
             // 
             // label3
             // 
@@ -178,6 +172,7 @@
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(181, 20);
             this.txtId.TabIndex = 16;
+            this.txtId.Leave += new System.EventHandler(this.txtId_Leave);
             // 
             // label1
             // 
@@ -190,20 +185,83 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Product";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Location = new System.Drawing.Point(326, 23);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(114, 133);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 28;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(335, 337);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 39);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "Delete";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(113, 258);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(175, 21);
+            this.cbCategory.TabIndex = 30;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(16, 263);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 16);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Category";
+            // 
+            // btnbrowse
+            // 
+            this.btnbrowse.Location = new System.Drawing.Point(326, 162);
+            this.btnbrowse.Name = "btnbrowse";
+            this.btnbrowse.Size = new System.Drawing.Size(101, 36);
+            this.btnbrowse.TabIndex = 32;
+            this.btnbrowse.Text = "browse";
+            this.btnbrowse.UseVisualStyleBackColor = true;
+            this.btnbrowse.Click += new System.EventHandler(this.btnbrowse_Click);
+            // 
+            // btnupdate
+            // 
+            this.btnupdate.Location = new System.Drawing.Point(4, 337);
+            this.btnupdate.Name = "btnupdate";
+            this.btnupdate.Size = new System.Drawing.Size(75, 39);
+            this.btnupdate.TabIndex = 33;
+            this.btnupdate.Text = "Update";
+            this.btnupdate.UseVisualStyleBackColor = true;
+            this.btnupdate.Click += new System.EventHandler(this.btnupdate_Click);
+            // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 425);
+            this.ClientSize = new System.Drawing.Size(848, 425);
+            this.Controls.Add(this.btnupdate);
+            this.Controls.Add(this.btnbrowse);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.cbCategory);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtDiscount);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtQuantity);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.Price);
+            this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtName);
@@ -211,8 +269,10 @@
             this.Controls.Add(this.label1);
             this.Name = "frmProduct";
             this.Text = "frmProduct";
+            this.Load += new System.EventHandler(this.frmProduct_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,16 +284,20 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtDiscount;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox Price;
+        private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cbCategory;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnbrowse;
+        private System.Windows.Forms.Button btnupdate;
     }
 }

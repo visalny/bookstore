@@ -53,18 +53,23 @@ namespace BookstoreM3
                 DataRow row = dt.Rows[0];
                 ConnectDatabase.empID = row[1].ToString();
                 ConnectDatabase.status = int.Parse(row[7].ToString());
-                if (ConnectDatabase.status == 0)
-                {
-                    MessageBox.Show("Admin");
-                }
-                else
-                {
-                    MessageBox.Show("Seller");
-                }
+                ConnectDatabase.empName = row[2].ToString();
+                MessageBox.Show(ConnectDatabase.empName);
+                //if (ConnectDatabase.status == 0)
+                //{
+                //    MessageBox.Show("Admin");
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Seller");
+                //}
             }
             else
             {
                 MessageBox.Show("Your username or password incorrect...", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtusername.Text = "";
+                txtpassword.Text = "";
+                txtusername.Focus();
                 count++;
             }
             if (count == 3)

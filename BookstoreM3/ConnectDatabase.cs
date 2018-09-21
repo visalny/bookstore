@@ -14,6 +14,7 @@ namespace BookstoreM3
     {
         public static SqlConnection con;
         public static string empID;
+        public static string empName;
         public static int status;
         public static void Myconnection()
         {
@@ -22,6 +23,7 @@ namespace BookstoreM3
             try
             {
                 con = new SqlConnection(str);
+                con.Open();
                 
             }
             catch(Exception ex)
