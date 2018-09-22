@@ -212,7 +212,7 @@
             // cbCategory
             // 
             this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(113, 258);
+            this.cbCategory.Location = new System.Drawing.Point(109, 258);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(175, 21);
             this.cbCategory.TabIndex = 30;
