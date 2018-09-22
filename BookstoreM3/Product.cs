@@ -89,7 +89,7 @@ namespace BookstoreM3
         }
         public static void GetProduct(DataGridView datagridview)
         {
-            da = new SqlDataAdapter("SELECT * FROM tblProduct INNER JOIN tblCategory ON tblProduct.cat_id=tblCategory.cid WHERE tblProduct.status=1", ConnectDatabase.con);
+            da = new SqlDataAdapter("SELECT * FROM tblProduct INNER JOIN tblCategory ON tblProduct.cat_id=tblCategory.cid WHERE tblProduct.status='active'", ConnectDatabase.con);
             dt = new DataTable();
             da.Fill(dt);
             datagridview.DataSource = dt;

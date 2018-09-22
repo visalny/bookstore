@@ -123,7 +123,7 @@ namespace BookstoreM3
         private void btnupdate_Click(object sender, EventArgs e)
         {
             getData();
-            Product.DelProduct(pro.Pid, pro.Pname, pro.Qty, pro.Price,cat_id);
+            Product.UpdateProduct(pro.Pid, pro.Pname, pro.Qty, pro.Price,cat_id);
         }
 
         private void getData()
@@ -144,6 +144,11 @@ namespace BookstoreM3
         {
             string name = txtsearch.Text;
             Product.SearchPro(dataGridView1, name);
+        }
+
+        private void btnclose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
