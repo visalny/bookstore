@@ -32,5 +32,30 @@ namespace BookstoreM3
             }
         }
 
+        public static void OnoffControls(Form frm,Boolean b)
+        {
+            foreach(Control ct in frm.Controls)
+            {
+                if (!(ct is Label))
+                    if (ct.Tag == null)
+                        ct.Enabled = b;
+            }
+        }
+
+        public static void ClearData(Form frm)
+        {
+            foreach(Control ct in frm.Controls)
+            {
+                if (ct is TextBox || ct is MaskedTextBox || ct is ComboBox)
+                    ct.Text = "";
+                else if (ct is RadioButton)
+                    ((RadioButton)ct).Checked = false;
+                else if (ct is DateTimePicker)
+                    if (ct.Tag == null)
+                        ((DateTimePicker)ct).CustomFormat = "";
+                    else if (ct is PictureBox)
+                        ((PictureBox)ct).Image = null;
+            }
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace BookstoreM3
         {
             InitializeComponent();
             ConnectDatabase.Myconnection();
+            
         }
 
         SqlDataAdapter da;
@@ -27,15 +28,12 @@ namespace BookstoreM3
         public static string fp;
         public static byte[] photo;
         public static int id;
+        public static int cat_id;
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
-            pro.Pid = txtId.Text;
-            pro.Pname = txtName.Text;
-            pro.Qty = int.Parse(txtQuantity.Text);
-            pro.Price = Double.Parse(txtPrice.Text);
 
-            Product.InsertProduct(pro.Pid, pro.Pname, pro.Qty, pro.Price);
+            getData();
+            Product.InsertProduct(pro.Pid, pro.Pname, pro.Qty, pro.Price,cat_id);
         }
 
         private void frmProduct_Load(object sender, EventArgs e)
@@ -47,11 +45,15 @@ namespace BookstoreM3
             cbCategory.Items.Clear();
             cbCategory.DataSource = dt;
             cbCategory.DisplayMember = "Type";
-            cbCategory.ValueMember = "id";
-
-            Product.GetProduct(dataGridView1);
-            dataGridView1.ClearSelection();
+            cbCategory.ValueMember = "cid";
             
+            Product.GetProduct(dataGridView1);
+
+            //clear combobox selected item
+            cbCategory.Text = "";
+            //dataGridView1.ClearSelection();
+            
+
         }
 
         private void btnbrowse_Click(object sender, EventArgs e)
@@ -114,20 +116,34 @@ namespace BookstoreM3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            pro.Pid = txtId.Text;
-            pro.Pname = txtName.Text;
-            pro.Qty = int.Parse(txtQuantity.Text);
-            pro.Price = Double.Parse(txtPrice.Text);
-            Product.DelProduct(pro.Pid, pro.Pname, pro.Qty, pro.Price);
+            getData();
+            Product.DelProduct(pro.Pid, pro.Pname, pro.Qty, pro.Price,cat_id);
         }
 
         private void btnupdate_Click(object sender, EventArgs e)
+        {
+            getData();
+            Product.DelProduct(pro.Pid, pro.Pname, pro.Qty, pro.Price,cat_id);
+        }
+
+        private void getData()
         {
             pro.Pid = txtId.Text;
             pro.Pname = txtName.Text;
             pro.Qty = int.Parse(txtQuantity.Text);
             pro.Price = Double.Parse(txtPrice.Text);
-            Product.DelProduct(pro.Pid, pro.Pname, pro.Qty, pro.Price);
+        }
+
+        private void cbCategory_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            cat_id = int.Parse(cbCategory.SelectedValue.ToString());
+            
+        }
+
+        private void txtsearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            string name = txtsearch.Text;
+            Product.SearchPro(dataGridView1, name);
         }
     }
 }

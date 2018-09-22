@@ -47,6 +47,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnbrowse = new System.Windows.Forms.Button();
             this.btnupdate = new System.Windows.Forms.Button();
+            this.txtsearch = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -55,11 +57,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.txtsearch);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(470, 0);
+            this.panel1.Location = new System.Drawing.Point(458, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(378, 425);
+            this.panel1.Size = new System.Drawing.Size(390, 507);
             this.panel1.TabIndex = 14;
             // 
             // dataGridView1
@@ -67,12 +71,12 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 66);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 60;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(372, 420);
+            this.dataGridView1.Size = new System.Drawing.Size(372, 429);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -212,6 +216,7 @@
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(175, 21);
             this.cbCategory.TabIndex = 30;
+            this.cbCategory.SelectionChangeCommitted += new System.EventHandler(this.cbCategory_SelectionChangeCommitted);
             // 
             // label6
             // 
@@ -244,11 +249,28 @@
             this.btnupdate.UseVisualStyleBackColor = true;
             this.btnupdate.Click += new System.EventHandler(this.btnupdate_Click);
             // 
+            // txtsearch
+            // 
+            this.txtsearch.Location = new System.Drawing.Point(91, 18);
+            this.txtsearch.Name = "txtsearch";
+            this.txtsearch.Size = new System.Drawing.Size(245, 20);
+            this.txtsearch.TabIndex = 1;
+            this.txtsearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtsearch_KeyUp);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(24, 18);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Search";
+            // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 425);
+            this.ClientSize = new System.Drawing.Size(848, 507);
             this.Controls.Add(this.btnupdate);
             this.Controls.Add(this.btnbrowse);
             this.Controls.Add(this.label6);
@@ -271,6 +293,7 @@
             this.Text = "frmProduct";
             this.Load += new System.EventHandler(this.frmProduct_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -299,5 +322,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnbrowse;
         private System.Windows.Forms.Button btnupdate;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtsearch;
     }
 }
