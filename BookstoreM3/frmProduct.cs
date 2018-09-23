@@ -153,5 +153,35 @@ namespace BookstoreM3
         {
             this.Dispose();
         }
+
+        private void dgvProduct_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtId.Enabled = false;
+            int i = 0;
+            if (dgvProduct.RowCount > 0)
+                i = e.RowIndex;
+            if (i < 0) return;
+            DataGridViewRow row = dgvProduct.Rows[i];
+            id = int.Parse(row.Cells[0].Value.ToString());
+            txtId.Text = row.Cells[1].Value.ToString();
+            txtName.Text = row.Cells[2].Value.ToString();
+            txtQuantity.Text = row.Cells[3].Value.ToString();
+            txtPrice.Text = row.Cells[4].Value.ToString();
+            int catid = int.Parse(row.Cells[6].Value.ToString());
+            //read byte from datagridview
+
+            photo = (byte[])row.Cells[5].Value;
+
+            MemoryStream ms = new MemoryStream(photo);
+            pictureBox1.Image = Image.FromStream(ms);
+            com = new SqlCommand("SELECT cid FROM tblCategory WHERE cid=" + catid, ConnectDatabase.con);
+            SqlDataReader dr = com.ExecuteReader();
+            while (dr.Read())
+            {
+                cbCategory.SelectedValue = int.Parse(dr[0].ToString());
+            }
+            com.Dispose();
+            dr.Dispose();
+        }
     }
 }
