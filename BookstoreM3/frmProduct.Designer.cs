@@ -228,13 +228,15 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button1.Location = new System.Drawing.Point(314, 249);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 39);
             this.button1.TabIndex = 29;
             this.button1.Text = "Delete";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cbCategory
@@ -259,24 +261,28 @@
             // 
             // btnbrowse
             // 
+            this.btnbrowse.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnbrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbrowse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnbrowse.Location = new System.Drawing.Point(720, 199);
             this.btnbrowse.Name = "btnbrowse";
             this.btnbrowse.Size = new System.Drawing.Size(101, 36);
             this.btnbrowse.TabIndex = 32;
             this.btnbrowse.Text = "browse";
-            this.btnbrowse.UseVisualStyleBackColor = true;
+            this.btnbrowse.UseVisualStyleBackColor = false;
             this.btnbrowse.Click += new System.EventHandler(this.btnbrowse_Click);
             // 
             // btnupdate
             // 
+            this.btnupdate.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnupdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnupdate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnupdate.Location = new System.Drawing.Point(222, 249);
             this.btnupdate.Name = "btnupdate";
             this.btnupdate.Size = new System.Drawing.Size(75, 39);
             this.btnupdate.TabIndex = 33;
             this.btnupdate.Text = "Update";
-            this.btnupdate.UseVisualStyleBackColor = true;
+            this.btnupdate.UseVisualStyleBackColor = false;
             this.btnupdate.Click += new System.EventHandler(this.btnupdate_Click);
             // 
             // btnclose
@@ -285,9 +291,9 @@
             this.btnclose.FlatAppearance.BorderSize = 0;
             this.btnclose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.btnclose.Image = ((System.Drawing.Image)(resources.GetObject("btnclose.Image")));
-            this.btnclose.Location = new System.Drawing.Point(937, 9);
+            this.btnclose.Location = new System.Drawing.Point(945, 9);
             this.btnclose.Name = "btnclose";
-            this.btnclose.Size = new System.Drawing.Size(38, 35);
+            this.btnclose.Size = new System.Drawing.Size(30, 30);
             this.btnclose.TabIndex = 34;
             this.btnclose.UseVisualStyleBackColor = false;
             this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
