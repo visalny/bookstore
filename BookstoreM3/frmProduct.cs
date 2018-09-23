@@ -33,7 +33,8 @@ namespace BookstoreM3
         {
 
             getData();
-            Product.InsertProduct(pro.Pid, pro.Pname, pro.Qty, pro.Price,cat_id);
+            Product.Modify("InsertProduct", pro.Pid, pro.Pname, pro.Qty, pro.Price,cat_id);
+            Product.GetProduct(dgvProduct);
         }
 
         private void frmProduct_Load(object sender, EventArgs e)
@@ -47,7 +48,7 @@ namespace BookstoreM3
             cbCategory.DisplayMember = "Type";
             cbCategory.ValueMember = "cid";
             
-            Product.GetProduct(dataGridView1);
+            Product.GetProduct(dgvProduct);
 
             //clear combobox selected item
             cbCategory.Text = "";
@@ -96,10 +97,10 @@ namespace BookstoreM3
         {
             txtId.Enabled = false;
             int i=0;
-            if (dataGridView1.RowCount > 0)
+            if (dgvProduct.RowCount > 0)
                 i = e.RowIndex;
             if (i < 0) return;
-            DataGridViewRow row = dataGridView1.Rows[i];
+            DataGridViewRow row = dgvProduct.Rows[i];
             id = int.Parse(row.Cells[0].Value.ToString());
             txtId.Text = row.Cells[1].Value.ToString();
             txtName.Text = row.Cells[2].Value.ToString();
@@ -117,13 +118,15 @@ namespace BookstoreM3
         private void button1_Click(object sender, EventArgs e)
         {
             getData();
-            Product.DelProduct(pro.Pid, pro.Pname, pro.Qty, pro.Price,cat_id);
+            Product.Modify("DelProduct", pro.Pid, pro.Pname, pro.Qty, pro.Price,cat_id);
+            Product.GetProduct(dgvProduct);
         }
 
         private void btnupdate_Click(object sender, EventArgs e)
         {
             getData();
-            Product.UpdateProduct(pro.Pid, pro.Pname, pro.Qty, pro.Price,cat_id);
+            Product.Modify("UpdateProduct", pro.Pid, pro.Pname, pro.Qty, pro.Price,cat_id);
+            Product.GetProduct(dgvProduct);
         }
 
         private void getData()
@@ -143,7 +146,7 @@ namespace BookstoreM3
         private void txtsearch_KeyUp(object sender, KeyEventArgs e)
         {
             string name = txtsearch.Text;
-            Product.SearchPro(dataGridView1, name);
+            Product.SearchPro(dgvProduct, name);
         }
 
         private void btnclose_Click(object sender, EventArgs e)

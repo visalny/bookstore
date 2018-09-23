@@ -72,9 +72,9 @@ namespace BookstoreM3
                 price = value;
             }
         }
-        public static void InsertProduct(string pid,string name,int qty,double price,int catid)
+        public static void Modify(string procedure,string pid,string name,int qty,double price,int catid)
         {
-            com = new SqlCommand("InsertProduct", ConnectDatabase.con);
+            com = new SqlCommand(procedure, ConnectDatabase.con);
             com.CommandType = CommandType.StoredProcedure;
             com.Parameters.AddWithValue("@code", pid);
             com.Parameters.AddWithValue("@name", name);
@@ -100,43 +100,11 @@ namespace BookstoreM3
             DataGridViewImageColumn img = new DataGridViewImageColumn();
             img = (DataGridViewImageColumn)datagridview.Columns["image"];
             img.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            datagridview.ClearSelection();
             
             
         }
 
-        public static void DelProduct(string pid, string name, int qty, double price,int catid)
-        {
-            com = new SqlCommand("DelProduct", ConnectDatabase.con);
-            com.CommandType = CommandType.StoredProcedure;
-            com.Parameters.AddWithValue("@code", pid);
-            com.Parameters.AddWithValue("@name", name);
-            com.Parameters.AddWithValue("@qty", qty);
-            com.Parameters.AddWithValue("@price", price);
-            com.Parameters.AddWithValue("@cat_id", catid);
-            com.Parameters.AddWithValue("@id", frmProduct.id);
-            if (frmProduct.fp != null)
-                frmProduct.photo = File.ReadAllBytes(frmProduct.fp);
-            com.Parameters.AddWithValue("@photo", frmProduct.photo);
-
-            com.ExecuteNonQuery();
-        }
-
-        public static void UpdateProduct(string pid, string name, int qty, double price,int catid)
-        {
-            com = new SqlCommand("UpdateProduct", ConnectDatabase.con);
-            com.CommandType = CommandType.StoredProcedure;
-            com.Parameters.AddWithValue("@code", pid);
-            com.Parameters.AddWithValue("@name", name);
-            com.Parameters.AddWithValue("@qty", qty);
-            com.Parameters.AddWithValue("@price", price);
-            com.Parameters.AddWithValue("@cat_id", catid);
-            com.Parameters.AddWithValue("@id", frmProduct.id);
-            if (frmProduct.fp != null)
-                frmProduct.photo = File.ReadAllBytes(frmProduct.fp);
-            com.Parameters.AddWithValue("@photo", frmProduct.photo);
-
-            com.ExecuteNonQuery();
-        }
 
         public static void SearchPro(DataGridView datagridview,string name)
         {
