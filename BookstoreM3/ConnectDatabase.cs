@@ -19,7 +19,7 @@ namespace BookstoreM3
         public static void Myconnection()
         {
             string str = "";
-            str = "Data Source=DESKTOP-40EVD05; Initial Catalog=BookStore;Integrated security=true";
+            str = "Data Source=SHENGLI; Initial Catalog=Bookstor;Integrated security=true";
             try
             {
                 con = new SqlConnection(str);
