@@ -17,6 +17,7 @@ namespace BookstoreM3
         {
             InitializeComponent();
         }
+        public static byte[] imag;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -54,15 +55,19 @@ namespace BookstoreM3
                 ConnectDatabase.empID = row[1].ToString();
                 ConnectDatabase.status = int.Parse(row[7].ToString());
                 ConnectDatabase.empName = row[2].ToString();
-                MessageBox.Show(ConnectDatabase.empName);
-                //if (ConnectDatabase.status == 0)
-                //{
-                //    MessageBox.Show("Admin");
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Seller");
-                //}
+                imag = (byte[])row[5];
+                if (ConnectDatabase.empID == "1")
+                {
+                    frmMain main = new frmMain();
+                    main.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    frmMain main = new frmMain();
+                    main.Show();
+                    this.Hide();
+                }
             }
             else
             {
@@ -77,6 +82,11 @@ namespace BookstoreM3
                 MessageBox.Show("Your login timeout");
                 Application.Exit();
             }
+        }
+
+        private void btnclose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

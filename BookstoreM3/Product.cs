@@ -84,7 +84,7 @@ namespace BookstoreM3
             if (frmProduct.fp != null)
                 frmProduct.photo = File.ReadAllBytes(frmProduct.fp);          
             com.Parameters.AddWithValue("@photo", frmProduct.photo);
-
+            
             com.ExecuteNonQuery();
         }
         public static void GetProduct(DataGridView datagridview)
@@ -93,13 +93,18 @@ namespace BookstoreM3
             dt = new DataTable();
             da.Fill(dt);
             datagridview.DataSource = dt;
+            DataGridViewImageColumn img = new DataGridViewImageColumn();
+            img = (DataGridViewImageColumn)datagridview.Columns["image"];
+            img.ImageLayout = DataGridViewImageCellLayout.Stretch;
             datagridview.Columns["id"].Visible = false;
             datagridview.Columns["cid"].Visible = false;
             datagridview.Columns["status"].Visible = false;
             datagridview.Columns["cat_id"].Visible = false;
-            DataGridViewImageColumn img = new DataGridViewImageColumn();
-            img = (DataGridViewImageColumn)datagridview.Columns["image"];
-            img.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            datagridview.Columns[1].HeaderCell.Value = "Code";
+            datagridview.Columns[2].HeaderCell.Value = "Name";
+            datagridview.Columns[3].HeaderCell.Value = "Price";
+            datagridview.Columns[4].HeaderCell.Value = "Quantity";
+            datagridview.Columns[5].HeaderCell.Value = "Image";
             datagridview.ClearSelection();
             
             
@@ -120,6 +125,11 @@ namespace BookstoreM3
             datagridview.Columns["cid"].Visible = false;
             datagridview.Columns["status"].Visible = false;
             datagridview.Columns["cat_id"].Visible = false;
+            datagridview.Columns[1].HeaderCell.Value = "Code";
+            datagridview.Columns[2].HeaderCell.Value = "Name";
+            datagridview.Columns[3].HeaderCell.Value = "Price";
+            datagridview.Columns[4].HeaderCell.Value = "Quantity";
+            datagridview.Columns[5].HeaderCell.Value = "Image";
             DataGridViewImageColumn img = new DataGridViewImageColumn();
             img = (DataGridViewImageColumn)datagridview.Columns["image"];
             img.ImageLayout = DataGridViewImageCellLayout.Stretch;

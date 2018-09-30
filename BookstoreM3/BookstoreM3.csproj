@@ -36,9 +36,12 @@
     <Reference Include="DevComponents.DotNetBar2">
       <HintPath>E:\Hea\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +55,22 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="ConnectDatabase.cs" />
+    <Compile Include="dsInvoice.cs">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsInvoice.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsSale.cs">
+      <DependentUpon>dsSale.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsSale.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsSale.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Employee.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -83,15 +102,34 @@
     <Compile Include="frmProduct.Designer.cs">
       <DependentUpon>frmProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRptInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptInvoice.Designer.cs">
+      <DependentUpon>frmRptInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptSaleReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptSaleReport.Designer.cs">
+      <DependentUpon>frmRptSaleReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSale.Designer.cs">
+      <DependentUpon>frmSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSaleReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSaleReport.Designer.cs">
+      <DependentUpon>frmSaleReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User Control\UcProduct.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User Control\UcProduct.Designer.cs">
-      <DependentUpon>UcProduct.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Sell.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,6 +145,18 @@
     <EmbeddedResource Include="frmProduct.resx">
       <DependentUpon>frmProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmRptInvoice.resx">
+      <DependentUpon>frmRptInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptSaleReport.resx">
+      <DependentUpon>frmRptSaleReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSale.resx">
+      <DependentUpon>frmSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSaleReport.resx">
+      <DependentUpon>frmSaleReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -115,10 +165,32 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="User Control\UcProduct.resx">
-      <DependentUpon>UcProduct.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="rptInvoice.rdlc" />
+    <EmbeddedResource Include="rptSale.rdlc" />
+    <None Include="dsInvoice.xsc">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
+    </None>
+    <None Include="dsInvoice.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsInvoice.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dsInvoice.xss">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
+    </None>
+    <None Include="dsSale.xsc">
+      <DependentUpon>dsSale.xsd</DependentUpon>
+    </None>
+    <None Include="dsSale.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsSale.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dsSale.xss">
+      <DependentUpon>dsSale.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -131,6 +203,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\14d4cb5905b6e5be78774b2a1b8f2120.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\password_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_property_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open_in_browser_filled_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tv_show_filled_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

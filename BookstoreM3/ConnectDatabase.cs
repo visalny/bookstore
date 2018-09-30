@@ -19,7 +19,7 @@ namespace BookstoreM3
         public static void Myconnection()
         {
             string str = "";
-            str = "Data Source=SHENGLI; Initial Catalog=Bookstor;Integrated security=true";
+            str = "Data Source=DESKTOP-40EVD05; Initial Catalog=BookStore;Integrated security=true";
             try
             {
                 con = new SqlConnection(str);
@@ -41,13 +41,22 @@ namespace BookstoreM3
                         ct.Enabled = b;
             }
         }
+   /*     internal static void OnoffControls(User_Control.UcEmployee ucEmployee, bool v)
+        {
+           
+        }
+        internal static void ClearData(User_Control.UcEmployee ucEmployee)
+        {
+           
+        }*/
 
-        public static void ClearData(Form frm)
+        public static void ClearData( Form frm)
         {
             foreach(Control ct in frm.Controls)
             {
                 if (ct is TextBox || ct is MaskedTextBox || ct is ComboBox)
-                    ct.Text = "";
+                    if(ct.Tag==null)
+                        ct.Text = "";
                 else if (ct is RadioButton)
                     ((RadioButton)ct).Checked = false;
                 else if (ct is DateTimePicker)

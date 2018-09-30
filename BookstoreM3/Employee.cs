@@ -109,6 +109,13 @@ namespace BookstoreM3
             dt = new DataTable();
             da.Fill(dt);
             datagridview.DataSource = dt;
+            datagridview.Columns[1].HeaderCell.Value = "ID";
+            datagridview.Columns[2].HeaderCell.Value = "Name";
+            datagridview.Columns[3].HeaderCell.Value = "Gender";
+            datagridview.Columns[4].HeaderCell.Value = "DOB";
+            datagridview.Columns[5].HeaderCell.Value = "Profile";
+            datagridview.Columns[6].HeaderCell.Value = "Username";
+            datagridview.Columns[7].HeaderCell.Value = "Password";
             DataGridViewImageColumn img = new DataGridViewImageColumn();
             img = (DataGridViewImageColumn)datagridview.Columns["image"];
             img.ImageLayout = DataGridViewImageCellLayout.Stretch;
@@ -117,6 +124,32 @@ namespace BookstoreM3
             datagridview.ClearSelection();
         }
 
+        public static void SearchEmp(string name,DataGridView datagridview)
+        {
+            com = new SqlCommand("searchEmp", ConnectDatabase.con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@n", name);
+            da = new SqlDataAdapter();
+            dt = new DataTable();
+            da.SelectCommand = com;
+            da.Fill(dt);
+            datagridview.DataSource = dt;
+            datagridview.DataSource = dt;
+            datagridview.Columns[1].HeaderCell.Value = "ID";
+            datagridview.Columns[2].HeaderCell.Value = "Name";
+            datagridview.Columns[3].HeaderCell.Value = "Gender";
+            datagridview.Columns[4].HeaderCell.Value = "DOB";
+            datagridview.Columns[5].HeaderCell.Value = "Profile";
+            datagridview.Columns[6].HeaderCell.Value = "Username";
+            datagridview.Columns[7].HeaderCell.Value = "Password";
+            DataGridViewImageColumn img = new DataGridViewImageColumn();
+            img = (DataGridViewImageColumn)datagridview.Columns["image"];
+            img.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            datagridview.Columns["id"].Visible = false;
+            datagridview.Columns["status"].Visible = false;
+            datagridview.ClearSelection();
+
+        }
         public static void GetEmpID(string eid, TextBox txtid)
         {
             SqlCommand com = new SqlCommand(@"SELECT emp_ID FROM tblEmployee WHERE emp_ID = @id", ConnectDatabase.con);

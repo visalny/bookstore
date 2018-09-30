@@ -60,6 +60,7 @@ namespace BookstoreM3
             dt = new DataTable();
             da.Fill(dt);
             listcat.View = View.Details;
+            listcat.Clear();
             listcat.Columns.Add("ID", 90);
             listcat.Columns.Add("Type", 106);
             //load data on listview
@@ -89,13 +90,16 @@ namespace BookstoreM3
             da = new SqlDataAdapter("SELECT MAX(cid) FROM tblCategory", ConnectDatabase.con);
             dt = new DataTable();
             da.Fill(dt);
-            //load data on listview
+            
             string[] arr = new string[1];
             for (int i = 0; i < dt.Rows.Count; i++)
             {
+               
                 DataRow dr = dt.Rows[i];
                 arr[0] = dr[0].ToString();
-                name.Text = arr[0];
+                int id = Int32.Parse(arr[0]);
+                name.Text = (id + 1).ToString();
+                
             }
             da.Dispose();
             dt.Dispose();
