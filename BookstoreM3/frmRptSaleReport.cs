@@ -25,6 +25,7 @@ namespace BookstoreM3
             Vspt.ZoomMode = ZoomMode.Percent;
             Vspt.ZoomPercent = 100;
 
+            
         }
     }
 }

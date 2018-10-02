@@ -76,6 +76,7 @@
             // 
             // btnpreview
             // 
+            this.btnpreview.Enabled = false;
             this.btnpreview.Location = new System.Drawing.Point(779, 498);
             this.btnpreview.Name = "btnpreview";
             this.btnpreview.Size = new System.Drawing.Size(92, 41);

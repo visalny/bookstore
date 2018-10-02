@@ -87,35 +87,49 @@ namespace BookstoreM3
                 dt.Dispose();
 
             }
+            btnpreview.Enabled = true;
         }
 
         private void btnpreview_Click(object sender, EventArgs e)
         {
             DateTime time = DateTime.Now;
             DataTable dtsale = new DataTable();
-            dtsale.Columns.Add("rDate", typeof(DateTime));
+            dtsale.Columns.Add("rDate", typeof(string));
             dtsale.Columns.Add("rproName", typeof(string));
             dtsale.Columns.Add("rqty", typeof(int));
             dtsale.Columns.Add("rprice", typeof(float));
-            dtsale.Columns.Add("ramount", typeof(float));
+            dtsale.Columns.Add("amount", typeof(float));
             dtsale.Columns.Add("remp", typeof(string));
             dtsale.Columns.Add("rcate", typeof(string));
 
-            string[] arr = new string[7];
+            // string[] arr = new string[7];
+            //if (listreport.Items == null)
+            //{
+            //    MessageBox.Show("No Data to print!", "Warnig", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+            //if (dt.Rows.Count < 0)
+            //{
+            //    MessageBox.Show("No Data to print!", "Warnig", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+            decimal total = 0;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
 
                 DataRow dr = dt.Rows[i];
-                arr[0] = dr[0].ToString();
-                arr[1] = dr[1].ToString();
-                arr[2] = dr[2].ToString();
-                arr[3] = dr[3].ToString();
-                arr[4] = dr[4].ToString();
-                arr[5] = dr[5].ToString();
-                arr[6] = dr[6].ToString();
+                string date = dr[0].ToString();
+                string proname = dr[1].ToString();
+                int qty = int.Parse(dr[2].ToString());
+                decimal price =decimal.Parse( dr[3].ToString());
+                decimal amount = decimal.Parse(dr[4].ToString());
+                string emp = dr[6].ToString();
+                string cate = dr[5].ToString();
+                MessageBox.Show(amount.ToString());
                 //item = new ListViewItem(arr);
                 //listreport.Items.Add(item);
-                dtsale.Rows.Add(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6]);
+                dtsale.Rows.Add(date, proname, qty, price, amount, emp, cate);
+                total = total + amount;
 
             }
             frmRptSaleReport RptSale = new frmRptSaleReport();
@@ -126,7 +140,10 @@ namespace BookstoreM3
             ReportDataSource rds = new ReportDataSource("dsSale", dtsale);
             lRpt.DataSources.Add(rds);
 
-            
+            ReportParameter p = new ReportParameter("rdate", time.ToString("dd-MM-yyyy hh:mm:ss"));
+            lRpt.SetParameters(p);
+            ReportParameter p2 = new ReportParameter("total", total.ToString());
+            lRpt.SetParameters(p2);
 
 
             RptSale.Show();
