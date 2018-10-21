@@ -29,20 +29,21 @@ namespace BookstoreM3
         decimal amount;
         decimal total_kh = 0;
         int cat_id;
+        Sell s = new Sell();
 
 
 
         private void cboproName_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            Sell.GetProbyProName(txtproID,txtprice, cboproName, cboCategory);     
+            s.GetProbyProName(txtproID,txtprice, cboproName, cboCategory);     
 
         }
 
         private void frmSale_Load(object sender, EventArgs e)
         {
-            
-            Sell.GetPro(cboproName);
-            Sell.GetCate(cboCategory);
+
+            s.GetPro(cboproName);
+            s.GetCate(cboCategory);
            
             //listsale.Clear();
             //listsale.View = View.Details;
@@ -94,7 +95,7 @@ namespace BookstoreM3
 
         private void txtproID_TextChanged(object sender, EventArgs e)
         {
-            Sell.GetProbyId(txtproID, txtprice, cboproName, cboCategory);
+            s.GetProbyId(txtproID, txtprice, cboproName, cboCategory);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -259,11 +260,11 @@ namespace BookstoreM3
                 MessageBox.Show("Invalid customer payment!");
                 return;
             }
-            if (decimal.Parse(txtpaymentkh.Text) <decimal.Parse(txtpaidkh.Text))
-            {
-                MessageBox.Show("Your money not enough!");
-                return;
-            }
+            //if (decimal.Parse(txtpaymentkh.Text) <decimal.Parse(txtpaidkh.Text))
+            //{
+            //    MessageBox.Show("Your money not enough!");
+            //    return;
+            //}
             //DateTime time = DateTime.Now;
             //string empid = ConnectDatabase.empID;
             //decimal total = Decimal.Parse(txtpaymentus.Text, NumberStyles.Currency);
@@ -363,6 +364,9 @@ namespace BookstoreM3
             RptInvoice.Show();
             RptInvoice.Vinv.RefreshReport();
 
+            
+            
+
         }
 
         private void dgvSale_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -438,5 +442,7 @@ namespace BookstoreM3
             txtreturnkh.Text = returnkh.ToString();
 
         }
+
+        
     }
 }

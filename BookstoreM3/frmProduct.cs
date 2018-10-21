@@ -71,9 +71,9 @@ namespace BookstoreM3
             if (b == true)
             {
                 getData();
-                Product.Modify("InsertProduct", pro.Pid, pro.Pname, pro.Qty, pro.Price, cat_id);
+                pro.Modify("InsertProduct", pro.Pid, pro.Pname, pro.Qty, pro.Price, cat_id);
                 MessageBox.Show("Your record was Inserted!");
-                Product.GetProduct(dgvProduct);
+                pro.GetProduct(dgvProduct);
                 ConnectDatabase.ClearData(this);
                 ConnectDatabase.OnoffControls(this, false);
                 btnNew.Text = "New";
@@ -83,15 +83,16 @@ namespace BookstoreM3
             else
             {
                 getData();
-                Product.Modify("UpdateProduct", pro.Pid, pro.Pname, pro.Qty, pro.Price, cat_id);
+                pro.Modify("UpdateProduct", pro.Pid, pro.Pname, pro.Qty, pro.Price, cat_id);
                 MessageBox.Show("Your record was updated!");
-                Product.GetProduct(dgvProduct);
+                pro.GetProduct(dgvProduct);
                 ConnectDatabase.ClearData(this);
                 ConnectDatabase.OnoffControls(this, false);
                 btnNew.Text = "New";
                 txtId.Text = "";
                 pictureBox1.Image = null;
             }
+            txtId.Enabled = false;
            
         }
 
@@ -105,8 +106,8 @@ namespace BookstoreM3
             cbCategory.DataSource = dt;
             cbCategory.DisplayMember = "Type";
             cbCategory.ValueMember = "cid";
-            
-            Product.GetProduct(dgvProduct);
+
+            pro.GetProduct(dgvProduct);
 
             //clear combobox selected item
             cbCategory.Text = "";
@@ -183,9 +184,9 @@ namespace BookstoreM3
             if (re == DialogResult.Yes)
             {
                 getData();
-                Product.Modify("DelProduct", pro.Pid, pro.Pname, pro.Qty, pro.Price, cat_id);
+                pro.Modify("DelProduct", pro.Pid, pro.Pname, pro.Qty, pro.Price, cat_id);
                 MessageBox.Show("Your record was deleted!");
-                Product.GetProduct(dgvProduct);
+                pro.GetProduct(dgvProduct);
                 ConnectDatabase.ClearData(this);
                 pictureBox1.Image = null;
                 txtId.Text = "";
@@ -198,8 +199,8 @@ namespace BookstoreM3
         private void btnupdate_Click(object sender, EventArgs e)
         {
             getData();
-            Product.Modify("UpdateProduct", pro.Pid, pro.Pname, pro.Qty, pro.Price,cat_id);
-            Product.GetProduct(dgvProduct);
+            pro.Modify("UpdateProduct", pro.Pid, pro.Pname, pro.Qty, pro.Price,cat_id);
+            pro.GetProduct(dgvProduct);
         }
 
         private void getData()
@@ -212,8 +213,6 @@ namespace BookstoreM3
 
         private void txtsearch_KeyUp(object sender, KeyEventArgs e)
         {
-            string name = txtsearch.Text;
-            Product.SearchPro(dgvProduct, name);
         }
 
         private void btnclose_Click(object sender, EventArgs e)
@@ -381,6 +380,13 @@ namespace BookstoreM3
         private void cbCategory_SelectionChangeCommitted(object sender, EventArgs e)
         {
             cat_id = int.Parse(cbCategory.SelectedValue.ToString());
+        }
+
+        private void txtsearch_KeyUp_1(object sender, KeyEventArgs e)
+        {
+
+            string name = txtsearch.Text;
+            pro.SearchPro(dgvProduct, name);
         }
     }
 }

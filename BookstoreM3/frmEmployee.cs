@@ -41,7 +41,7 @@ namespace BookstoreM3
         private void txtid_Leave(object sender, EventArgs e)
         {
             string eid = txtid.Text;
-            Employee.GetEmpID(eid, txtid);
+            emp.GetEmpID(eid, txtid);
         }
 
 
@@ -71,7 +71,7 @@ namespace BookstoreM3
 
         private void frmEmployee_Load_1(object sender, EventArgs e)
         {
-            Employee.GetEmp(dgvEmp);
+            emp.GetEmp(dgvEmp);
             ConnectDatabase.OnoffControls(this, false);
             txtid.Enabled = false;
             textBox1.Text = "Searching ...";
@@ -81,7 +81,7 @@ namespace BookstoreM3
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
         {
-            Employee.SearchEmp(textBox1.Text, dgvEmp);
+            emp.SearchEmp(textBox1.Text, dgvEmp);
         }
 
         private void dgvEmp_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -137,8 +137,8 @@ namespace BookstoreM3
             if (re == DialogResult.Yes)
             {
                 getData();
-                Employee.Modify("DeleteEmp",emp.Eid,emp.Ename,emp.Gender,emp.Date,emp.Username,emp.Password);
-                Employee.GetEmp(dgvEmp);
+                emp.Modify("DeleteEmp",emp.Eid,emp.Ename,emp.Gender,emp.Date,emp.Username,emp.Password);
+                emp.GetEmp(dgvEmp);
                 ConnectDatabase.ClearData(this);
                 ConnectDatabase.OnoffControls(this, false);
             }
@@ -152,6 +152,7 @@ namespace BookstoreM3
             txtid.Enabled = false;
             txtname.Focus();
             btnnew.Text = "Cancel";
+            btnnew.Image = BookstoreM3.Properties.Resources.cancel_32px;
 
         }
 
@@ -189,7 +190,7 @@ namespace BookstoreM3
 
         private void txtid_Leave_1(object sender, EventArgs e)
         {
-            Employee.GetEmpID(txtid.Text, txtid);
+            emp.GetEmpID(txtid.Text, txtid);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -227,11 +228,12 @@ namespace BookstoreM3
             if (b == true)
             {
                 getData();
-                Employee.Modify("InsertEmp", emp.Eid, emp.Ename, emp.Gender, emp.Date, emp.Username, emp.Password);
+                emp.Modify("InsertEmp", emp.Eid, emp.Ename, emp.Gender, emp.Date, emp.Username, emp.Password);
                 MessageBox.Show("Your record was Inserted!");
-                Employee.GetEmp(dgvEmp);
+                emp.GetEmp(dgvEmp);
                 txtid.Text = "";
-                btnnew.Text = "New";
+                btnnew.Text = "  New";
+                btnnew.Image = BookstoreM3.Properties.Resources.new_32px;
                 rdMale.Checked = true;
                 txtid.Enabled = false;
                 ConnectDatabase.ClearData(this);
@@ -242,11 +244,12 @@ namespace BookstoreM3
             else
             {
                 getData();
-                Employee.Modify("UpdateEmp", emp.Eid, emp.Ename, emp.Gender, emp.Date, emp.Username, emp.Password);
+                emp.Modify("UpdateEmp", emp.Eid, emp.Ename, emp.Gender, emp.Date, emp.Username, emp.Password);
                 MessageBox.Show("Your record was updated!");
-                Employee.GetEmp(dgvEmp);
+                emp.GetEmp(dgvEmp);
                 txtid.Text = "";
-                btnnew.Text = "New";
+                btnnew.Text = "  New";
+                btnnew.Image = BookstoreM3.Properties.Resources.new_32px;
                 rdMale.Checked = true;
                 txtid.Enabled = false;
                 ConnectDatabase.ClearData(this);

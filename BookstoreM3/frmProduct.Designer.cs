@@ -75,6 +75,7 @@
             this.txtsearch.Size = new System.Drawing.Size(778, 29);
             this.txtsearch.TabIndex = 4;
             this.txtsearch.Enter += new System.EventHandler(this.txtsearch_Enter);
+            this.txtsearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtsearch_KeyUp_1);
             this.txtsearch.Leave += new System.EventHandler(this.txtsearch_Leave_1);
             // 
             // dgvProduct

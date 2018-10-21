@@ -124,7 +124,7 @@
             this.lblusername.AutoSize = true;
             this.lblusername.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblusername.ForeColor = System.Drawing.Color.White;
-            this.lblusername.Location = new System.Drawing.Point(72, 252);
+            this.lblusername.Location = new System.Drawing.Point(66, 252);
             this.lblusername.Name = "lblusername";
             this.lblusername.Size = new System.Drawing.Size(45, 21);
             this.lblusername.TabIndex = 9;
@@ -181,7 +181,7 @@
             this.btnInfo.Name = "btnInfo";
             this.btnInfo.Size = new System.Drawing.Size(177, 54);
             this.btnInfo.TabIndex = 5;
-            this.btnInfo.Text = "            Information";
+            this.btnInfo.Text = "      Selling Product";
             this.btnInfo.UseVisualStyleBackColor = false;
             this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
             // 

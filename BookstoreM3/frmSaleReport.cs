@@ -125,7 +125,7 @@ namespace BookstoreM3
                 decimal amount = decimal.Parse(dr[4].ToString());
                 string emp = dr[6].ToString();
                 string cate = dr[5].ToString();
-                MessageBox.Show(amount.ToString());
+               // MessageBox.Show(amount.ToString());
                 //item = new ListViewItem(arr);
                 //listreport.Items.Add(item);
                 dtsale.Rows.Add(date, proname, qty, price, amount, emp, cate);

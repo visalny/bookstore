@@ -46,7 +46,7 @@ namespace BookstoreM3
                 type = value;
             }
         }
-        public static void AddCat(string name)
+        public void AddCat(string name)
         {
             com = new SqlCommand("InsertCat", ConnectDatabase.con);
             com.CommandType = CommandType.StoredProcedure;
@@ -54,7 +54,7 @@ namespace BookstoreM3
             com.ExecuteNonQuery();
         }
 
-        public static void GetCat(ListView listcat)
+        public void GetCat(ListView listcat)
         {
             da = new SqlDataAdapter("SELECT * FROM tblCategory", ConnectDatabase.con);
             dt = new DataTable();
@@ -85,7 +85,7 @@ namespace BookstoreM3
             dt.Dispose();
             
         }
-        public static void GetCatByid(TextBox name)
+        public void GetCatByid(TextBox name)
         {
             da = new SqlDataAdapter("SELECT MAX(cid) FROM tblCategory", ConnectDatabase.con);
             dt = new DataTable();
@@ -104,7 +104,7 @@ namespace BookstoreM3
             da.Dispose();
             dt.Dispose();
         }
-        public static void SearchCat(ListView listcat,string name)
+        public void SearchCat(ListView listcat,string name)
         {
             com = new SqlCommand("searchCat", ConnectDatabase.con);
             com.CommandType = CommandType.StoredProcedure;
@@ -137,7 +137,7 @@ namespace BookstoreM3
             da.Dispose();
             dt.Dispose();
         }
-         public static void UpdateCategory(int id,string type)
+         public void UpdateCategory(int id,string type)
         {
             com = new SqlCommand("UpdateCategory",ConnectDatabase.con);
             com.CommandType = CommandType.StoredProcedure;

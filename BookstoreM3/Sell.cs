@@ -19,7 +19,7 @@ namespace BookstoreM3
 
 
 
-        public static void GetProbyProName(TextBox txtproid,TextBox txtprice,ComboBox cboproname,ComboBox cbocategory)
+        public void GetProbyProName(TextBox txtproid,TextBox txtprice,ComboBox cboproname,ComboBox cbocategory)
         {
             txtproid.Text = cboproname.SelectedValue.ToString();
             com = new SqlCommand("SELECT cat_id,price,image,quantity FROM tblProduct WHERE code='" + txtproid.Text + "' AND status='active'", ConnectDatabase.con);
@@ -34,7 +34,7 @@ namespace BookstoreM3
             com.Dispose();
             dr.Dispose();
         }
-        public static void GetProbyId(TextBox txtproid, TextBox txtprice, ComboBox cboproname, ComboBox cbocategory)
+        public void GetProbyId(TextBox txtproid, TextBox txtprice, ComboBox cboproname, ComboBox cbocategory)
         {
            
             com = new SqlCommand("SELECT cat_id,price,image,quantity FROM tblProduct WHERE code='" + txtproid.Text + "' AND status='active'", ConnectDatabase.con);
@@ -61,7 +61,7 @@ namespace BookstoreM3
 
         }
 
-        public static void GetPro(ComboBox cboproduct)
+        public void GetPro(ComboBox cboproduct)
         {
             da = new SqlDataAdapter("SELECT * FROM tblProduct WHERE status='active'", ConnectDatabase.con);
             dt = new DataTable();
@@ -74,7 +74,7 @@ namespace BookstoreM3
             cboproduct.Text = "";
 
         }
-        public static void GetCate(ComboBox cbocategory)
+        public void GetCate(ComboBox cbocategory)
         {
             da = new SqlDataAdapter("SELECT cid,Type FROM tblCategory", ConnectDatabase.con);
             dt = new DataTable();

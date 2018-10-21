@@ -72,7 +72,7 @@ namespace BookstoreM3
                 price = value;
             }
         }
-        public static void Modify(string procedure,string pid,string name,int qty,double price,int catid)
+        public void Modify(string procedure,string pid,string name,int qty,double price,int catid)
         {
             com = new SqlCommand(procedure, ConnectDatabase.con);
             com.CommandType = CommandType.StoredProcedure;
@@ -87,7 +87,7 @@ namespace BookstoreM3
             
             com.ExecuteNonQuery();
         }
-        public static void GetProduct(DataGridView datagridview)
+        public void GetProduct(DataGridView datagridview)
         {
             da = new SqlDataAdapter("SELECT * FROM tblProduct INNER JOIN tblCategory ON tblProduct.cat_id=tblCategory.cid WHERE tblProduct.status='active'", ConnectDatabase.con);
             dt = new DataTable();
@@ -111,7 +111,7 @@ namespace BookstoreM3
         }
 
 
-        public static void SearchPro(DataGridView datagridview,string name)
+        public void SearchPro(DataGridView datagridview,string name)
         {
             com = new SqlCommand("searchPro", ConnectDatabase.con);
             com.CommandType = CommandType.StoredProcedure;

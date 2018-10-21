@@ -103,7 +103,7 @@ namespace BookstoreM3
 
         public Employee() { }
 
-        public static void GetEmp(DataGridView datagridview)
+        public void GetEmp(DataGridView datagridview)
         {
             da = new SqlDataAdapter("SELECT * FROM tblEmployee WHERE status=1", ConnectDatabase.con);
             dt = new DataTable();
@@ -124,7 +124,7 @@ namespace BookstoreM3
             datagridview.ClearSelection();
         }
 
-        public static void SearchEmp(string name,DataGridView datagridview)
+        public void SearchEmp(string name,DataGridView datagridview)
         {
             com = new SqlCommand("searchEmp", ConnectDatabase.con);
             com.CommandType = CommandType.StoredProcedure;
@@ -150,7 +150,7 @@ namespace BookstoreM3
             datagridview.ClearSelection();
 
         }
-        public static void GetEmpID(string eid, TextBox txtid)
+        public void GetEmpID(string eid, TextBox txtid)
         {
             SqlCommand com = new SqlCommand(@"SELECT emp_ID FROM tblEmployee WHERE emp_ID = @id", ConnectDatabase.con);
             com.Parameters.AddWithValue("@id", eid);
@@ -172,7 +172,7 @@ namespace BookstoreM3
             }
         }
 
-        public static void Modify(string procedure, string id, string name, string gender, DateTime date, string uname, string uid)
+        public void Modify(string procedure, string id, string name, string gender, DateTime date, string uname, string uid)
         {
             com = new SqlCommand(procedure, ConnectDatabase.con);
             com.CommandType = CommandType.StoredProcedure;

@@ -44,53 +44,37 @@ namespace BookstoreM3
             panelUpdown.Height = btn.Height;
 
         }
-
-        private void btnEmployee_Click(object sender, EventArgs e)
+        private void ShowForm(Button btn,Form frm)
         {
-            MoveAsidePanel(btnEmployee);
+            MoveAsidePanel(btn);
             panelCrtl.Controls.Clear();
-            frmEmployee frm = new frmEmployee();
+            //frmEmployee frm = new frmEmployee();
             frm.TopLevel = false;
             panelCrtl.Controls.Add(frm);
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Dock = DockStyle.Fill;
             frm.Show();
+        }
+
+        private void btnEmployee_Click(object sender, EventArgs e)
+        {
+            ShowForm(btnEmployee, new frmEmployee());
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
         {
-            MoveAsidePanel(btnProduct);
-            panelCrtl.Controls.Clear();
-            frmProduct frm = new frmProduct();
-            frm.TopLevel = false;
-            panelCrtl.Controls.Add(frm);
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
+            ShowForm(btnProduct, new frmProduct());
         }
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
-            MoveAsidePanel(btnInfo);
-            panelCrtl.Controls.Clear();
-            frmSale frm = new frmSale();
-            frm.TopLevel = false;
-            panelCrtl.Controls.Add(frm);
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
+            ShowForm(btnInfo, new frmSale());
         }
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            MoveAsidePanel(btnReport);
-            panelCrtl.Controls.Clear();
-            frmSaleReport frm = new frmSaleReport();
-            frm.TopLevel = false;
-            panelCrtl.Controls.Add(frm);
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
+            ShowForm(btnReport, new frmSaleReport());
+           
         }
 
        
@@ -117,7 +101,7 @@ namespace BookstoreM3
 
         private void btnlogout_Click(object sender, EventArgs e)
         {
-            MoveAsidePanel(btnReport);
+            MoveAsidePanel(btnlogout);
             Form1 log = new Form1();
             log.Show();
             this.Hide();
@@ -125,14 +109,7 @@ namespace BookstoreM3
 
         private void btnCategory_Click(object sender, EventArgs e)
         {
-            MoveAsidePanel(btnReport);
-            panelCrtl.Controls.Clear();
-            frmCategory frm = new frmCategory();
-            frm.TopLevel = false;
-            panelCrtl.Controls.Add(frm);
-            frm.FormBorderStyle = FormBorderStyle.None;
-            //frm.Dock = DockStyle.Fill;
-            frm.Show();
+            ShowForm(btnCategory, new frmCategory());
         }
 
         private void frmMain_Load(object sender, EventArgs e)

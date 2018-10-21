@@ -27,26 +27,28 @@ namespace BookstoreM3
             if (b == true)
             {
                 cat.Type = txttype.Text;
-                Category.AddCat(cat.Type);
+                cat.AddCat(cat.Type);
                 MessageBox.Show("You record was Inserted!");
-                Category.GetCatByid(txtid);
-                Category.GetCat(listCat);
+                cat.GetCatByid(txtid);
+                cat.GetCat(listCat);
                 
                 txttype.Text = "";
                 ConnectDatabase.OnoffControls(this, false);
-                btnnew.Text = "New";
+                btnnew.Text = "  New";
+                btnnew.Image = BookstoreM3.Properties.Resources.new_32px;
             }
             else
             {
                 cat.Type = txttype.Text;
                 cat.Id = int.Parse(txtid.Text);
-                Category.UpdateCategory(cat.Id, cat.Type);
+                cat.UpdateCategory(cat.Id, cat.Type);
                 MessageBox.Show("Your record was updated!");
-                Category.GetCat(listCat);
+                cat.GetCat(listCat);
                 txttype.Text = "";
                 ConnectDatabase.OnoffControls(this, false);
-                btnnew.Text = "New";
-                
+                btnnew.Text = "  New";
+                btnnew.Image = BookstoreM3.Properties.Resources.new_32px;
+
             }
             
             
@@ -55,8 +57,8 @@ namespace BookstoreM3
         private void frmCategory_Load(object sender, EventArgs e)
         {
 
-            Category.GetCat(listCat);
-            Category.GetCatByid(txtid);
+            cat.GetCat(listCat);
+            cat.GetCatByid(txtid);
             txtsearch.Text = "Searching ...";
             txtsearch.ForeColor = Color.Gray;
             ConnectDatabase.OnoffControls(this, false);
@@ -65,7 +67,7 @@ namespace BookstoreM3
         private void txtsearch_KeyUp(object sender, KeyEventArgs e)
         {
             string name = txtsearch.Text;
-            Category.SearchCat(listCat, name);
+            cat.SearchCat(listCat, name);
             
         }
 
@@ -85,7 +87,7 @@ namespace BookstoreM3
         {   
             cat.Type = txttype.Text;
             cat.Id = int.Parse(txtid.Text);
-            Category.UpdateCategory(cat.Id,cat.Type);
+            cat.UpdateCategory(cat.Id,cat.Type);
            
         }
 
@@ -110,7 +112,7 @@ namespace BookstoreM3
                 btnnew.Text = "    Cancel";
                 btnnew.Image = BookstoreM3.Properties.Resources.cancel_32px;
                 btnadd.Enabled = true;
-                Category.GetCatByid(txtid);
+                cat.GetCatByid(txtid);
                 txttype.Text = "";
                 btnEdit.Enabled = false;
             }
@@ -124,7 +126,7 @@ namespace BookstoreM3
                     btnnew.Image = BookstoreM3.Properties.Resources.new_32px;
                     txttype.Text = "";
                     btnEdit.Enabled = false;
-                    Category.GetCatByid(txtid);
+                    cat.GetCatByid(txtid);
                     ConnectDatabase.OnoffControls(this, false);
                 }
                 
@@ -137,7 +139,8 @@ namespace BookstoreM3
             ConnectDatabase.OnoffControls(this, true);
             txttype.Focus();
             txtid.Enabled = false;
-            btnnew.Text = "Cancel";
+            btnnew.Text = "    Cancel";
+            btnnew.Image = BookstoreM3.Properties.Resources.cancel_32px;
         }
     }
 }
